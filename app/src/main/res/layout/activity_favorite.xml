@@ -20,8 +20,8 @@
     <FrameLayout
         android:layout_width="409dp"
         android:layout_height="669dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-6dp">
 
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
