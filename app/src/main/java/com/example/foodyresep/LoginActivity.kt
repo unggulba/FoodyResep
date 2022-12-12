@@ -11,7 +11,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var editTextTextEmailAddress: EditText
@@ -30,26 +29,30 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "Data Masih Ada Yang Kosong", Toast.LENGTH_SHORT).show()
 
             }else{
-//                login(editTextTextEmailAddress.text.toString(), editTextTextPassword.text.toString())
+                login(editTextTextEmailAddress.text.toString(), editTextTextPassword.text.toString())
             }
         }
 
 
     }
 
-//    private fun login(email: String, pass:String) {
-//        NetworkConfig().getService()
-//            .login(email, pass)
-//            .enqueue(object : Callback<UserResponse> {
-//                override fun onFailure(call: Call<UserResponse>, t: Throwable) {
-//                    Toast.makeText(this@LoginActivity, t.localizedMessage, Toast.LENGTH_SHORT).show()
-//                }
-//                override fun onResponse(
-//                    call: Call<UserResponse>,
-//                    response: Response<UserResponse>
-//                ) {
-//                    startActivity(Intent(applicationContext, MainActivity::class.java))
-//                }
-//            })
-//    }
+    private fun login(email: String, pass:String) {
+        NetworkConfig().getService()
+            .login(email, pass)
+            .enqueue(object : Callback<UserResponse> {
+                override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+                    Toast.makeText(this@LoginActivity, t.localizedMessage, Toast.LENGTH_SHORT).show()
+                }
+                override fun onResponse(
+                    call: Call<UserResponse>,
+                    response: Response<UserResponse>
+                ) {
+                    if (response.body()!!.msg.equals("Berhasil")) {
+                        startActivity(Intent(applicationContext, MainActivity::class.java))
+                    } else {
+                        Toast.makeText(this@LoginActivity, response.body()!!.msg, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            })
+    }
 }
