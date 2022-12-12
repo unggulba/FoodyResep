@@ -24,10 +24,10 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/textView5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.218"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="90dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView4"
