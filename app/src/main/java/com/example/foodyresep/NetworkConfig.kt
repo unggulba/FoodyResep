@@ -12,9 +12,9 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 
 class NetworkConfig {
-    fun getService(): Any {
 
-    }
+
+
     fun getInterceptor() : OkHttpClient {
         val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.BODY
