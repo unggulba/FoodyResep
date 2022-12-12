@@ -16,6 +16,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var editTextTextEmailAddress: EditText
     private  lateinit var editTextTextPassword: EditText
     private lateinit var bLogin: Button
+    private lateinit var bRegistrasi: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +24,7 @@ class LoginActivity : AppCompatActivity() {
 
         editTextTextEmailAddress = findViewById(R.id.editTextTextEmailAddress) as EditText
         editTextTextPassword = findViewById(R.id.editTextTextPassword) as EditText
+        bRegistrasi = findViewById(R.id.bRegistrasi) as Button
         bLogin = findViewById(R.id.bLogin) as Button
         bLogin.setOnClickListener{
             if (editTextTextEmailAddress.text.equals("") || editTextTextPassword.text.equals("")){
@@ -31,6 +33,10 @@ class LoginActivity : AppCompatActivity() {
             }else{
                 login(editTextTextEmailAddress.text.toString(), editTextTextPassword.text.toString())
             }
+        }
+
+        bRegistrasi.setOnClickListener {
+            startActivity(Intent(applicationContext, RegisterActivity::class.java))
         }
 
 
@@ -55,4 +61,6 @@ class LoginActivity : AppCompatActivity() {
                 }
             })
     }
+
+
 }

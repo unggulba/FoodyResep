@@ -42,7 +42,7 @@ interface Users {
     fun register(
         @Field("email") email: String,
         @Field("password") password: String,
-        @Field("usernmae") username: String
+        @Field("username") username: String
     ): Call<UserResponse>
 
 }
