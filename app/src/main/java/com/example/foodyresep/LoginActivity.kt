@@ -47,7 +47,11 @@ class LoginActivity : AppCompatActivity() {
                     call: Call<UserResponse>,
                     response: Response<UserResponse>
                 ) {
-                    startActivity(Intent(applicationContext, MainActivity::class.java))
+                    if (response.body()!!.msg.equals("Berhasil")) {
+                        startActivity(Intent(applicationContext, MainActivity::class.java))
+                    } else {
+                        Toast.makeText(this@LoginActivity, response.body()!!.msg, Toast.LENGTH_SHORT).show()
+                    }
                 }
             })
     }
