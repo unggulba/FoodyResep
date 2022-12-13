@@ -12,6 +12,9 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 
 class NetworkConfig {
+
+
+
     fun getInterceptor() : OkHttpClient {
         val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.BODY
@@ -27,7 +30,7 @@ class NetworkConfig {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
-    fun getService() = getRetrofit().create(Users::class.java)
+    fun getService(): Users = getRetrofit().create(Users::class.java)
 }
 interface Users {
     @FormUrlEncoded
