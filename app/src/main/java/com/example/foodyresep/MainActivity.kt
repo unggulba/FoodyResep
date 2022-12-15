@@ -2,6 +2,7 @@ package com.example.foodyresep
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -9,26 +10,27 @@ class MainActivity : AppCompatActivity() {
     lateinit var bottomNav : BottomNavigationView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar!!.hide()
         setContentView(R.layout.activity_main)
-        supportActionBar!!.title = "Resep"
         loadFragment(mainFragment())
         bottomNav = findViewById(R.id.bottomNavigationView) as BottomNavigationView
-        bottomNav.setOnNavigationItemReselectedListener {
-            when (it.itemId) {
-                R.id.recipesFragment -> {
-                    loadFragment(mainFragment())
-                    return@setOnNavigationItemReselectedListener
+        bottomNav.setOnItemSelectedListener(object : BottomNavigationView.OnNavigationItemSelectedListener {
+            override fun onNavigationItemSelected(item: MenuItem): Boolean {
+                when (item.itemId) {
+                    R.id.recipesFragment -> {
+                        loadFragment(mainFragment())
+                    }
+                    R.id.favoriteRecipesFragment -> {
+                        loadFragment(favoriteFragment())
+                    }
+                    R.id.wheels -> {
+                        loadFragment(gamesFragment())
+                    }
                 }
-                R.id.favoriteRecipesFragment -> {
-                    loadFragment(favoriteFragment())
-                    return@setOnNavigationItemReselectedListener
-                }
-                R.id.wheels -> {
-                    loadFragment(gamesFragment())
-                    return@setOnNavigationItemReselectedListener
-                }
+                return true
             }
-        }
+
+        })
     }
     private  fun loadFragment(fragment: Fragment){
         val transaction = supportFragmentManager.beginTransaction()
