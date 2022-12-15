@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.faishal.saku.util.luckydraw.WheelView
+    <com.example.foodyresep.luckyDraw.WheelView
         android:id="@+id/wv_main_wheel"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
