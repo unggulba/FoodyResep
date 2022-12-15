@@ -20,7 +20,6 @@ import android.view.animation.DecelerateInterpolator;
 
 import androidx.annotation.Nullable;
 
-import com.faishal.saku.R;
 
 import java.util.List;
 
